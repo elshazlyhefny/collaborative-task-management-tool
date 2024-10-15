@@ -1,0 +1,22 @@
+{
+    "app": {
+        "all_tasks": "كل المهام",
+        "important": "مهمة!",
+        "completed": "منجزة!",
+        "addTask": "إضافة مهمة جديدة",
+        "logout": "تسجيل الخروج",
+        "do_it_now": "فعلها الآن!",
+        "createTask": "إنشاء مهمة",
+        "Title": "عنوان",
+        "Description": "وصف",
+        "Date": "تاريخ",
+        "ToggleCompleted": "تبديل المهمة",
+        "DeleteTask": "حذف المهمة",
+        "ToggleImportant": "تبديل المهمة مهمة",
+        "TitlePlaceholder": "الرجاء كتابة عنوان",
+        "DescriptionPlaceholder": "الرجاء كتابة وصف",
+        "ImportantTasks": "المهام المهمة",
+        "CompletedTasks": "المهام المنجزة",
+        "IncompleteTasks": "المهام غير منجزة"
+    }
+}

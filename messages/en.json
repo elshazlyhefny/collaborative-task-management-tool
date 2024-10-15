@@ -1,0 +1,22 @@
+{
+    "app": {
+        "all_tasks": "All Tasks",
+        "important": "Important!",
+        "completed": "Completed!",
+        "addTask": "Add New Task",
+        "logout": "Sign Out",
+        "do_it_now": "Do it now!",
+        "Title": "Title",
+        "createTask": "Create a Task",
+        "Description": "Description",
+        "Date": "Date",
+        "ToggleCompleted": "Toggle Completed",
+        "DeleteTask": "Delete Task",
+        "ToggleImportant": "Toggle Important",
+        "TitlePlaceholder": "please enter a Title",
+        "DescriptionPlaceholder": "please enter a Description",
+        "ImportantTasks": "Important Tasks",
+        "CompletedTasks": "Completed Tasks",
+        "IncompleteTasks": "Incomplete Tasks"
+    }
+}
