@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 }
 
 export async function GET( ) {
-  // try {
+  try {
     const session  = await getServerSession(authOptions);
     console.log(session)
     const { userId } = { userId: (session?.user as UserWithId)?.id, };
@@ -69,10 +69,10 @@ export async function GET( ) {
     });
 
     return NextResponse.json(tasks);
-  // } catch (error) {
-  //   console.log("ERROR GETTING TASKS: ", error);
-  //   return NextResponse.json({ error: "Error updating task", status: 500 });
-  // }
+  } catch (error) {
+    console.log("ERROR GETTING TASKS: ", error);
+    return NextResponse.json({ error: "Error updating task", status: 500 });
+  }
 }
 
 export async function PUT(req: Request) {
