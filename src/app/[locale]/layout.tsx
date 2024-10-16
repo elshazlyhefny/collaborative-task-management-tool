@@ -8,6 +8,8 @@ import ContextProvider from "../providers/ContextProvider";
 import NextTopLoader from "nextjs-toploader";
 import {NextIntlClientProvider} from 'next-intl';
 import { getMessages} from 'next-intl/server';
+import { NextAuthProvider } from "../providers/NextAuthProvider";
+
 const nunito = Nunito({
   weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
@@ -45,6 +47,7 @@ export default async function RootLayout({
         </head>
         <body className={nunito.className}>
           <NextIntlClientProvider messages={messages}>
+          <NextAuthProvider>
             <NextTopLoader
               height={2}
               color="#27AE60"
@@ -56,7 +59,8 @@ export default async function RootLayout({
                 <div className="w-full">{children}</div>
               </GlobalStyleProvider>
             </ContextProvider>
-            </NextIntlClientProvider>
+            </NextAuthProvider>
+          </NextIntlClientProvider>
         </body>
       </html>
       

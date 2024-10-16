@@ -17,6 +17,8 @@
         "DescriptionPlaceholder": "الرجاء كتابة وصف",
         "ImportantTasks": "المهام المهمة",
         "CompletedTasks": "المهام المنجزة",
-        "IncompleteTasks": "المهام غير منجزة"
+        "IncompleteTasks": "المهام غير منجزة",
+        "demo_user": "مستخدم تجريبي",
+        "login": "تسجيل الدخول"
     }
 }

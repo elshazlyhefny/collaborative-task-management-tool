@@ -17,6 +17,8 @@
         "DescriptionPlaceholder": "please enter a Description",
         "ImportantTasks": "Important Tasks",
         "CompletedTasks": "Completed Tasks",
+        "login": "Login",
+        "demo_user": "Demo User",
         "IncompleteTasks": "Incomplete Tasks"
     }
 }
