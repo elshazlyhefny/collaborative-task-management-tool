@@ -1,12 +1,19 @@
 import prisma from "@/app/utils/connect";
 import { NextResponse } from "next/server";
-
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/lib/nextAuth";
+interface UserWithId {
+  id: string;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+}
 export async function POST(req: Request) {
   try {
-    const { userId } = 
-      {
-        userId: null,
-      };
+    const session  = await getServerSession(authOptions);
+
+    const { userId } = { userId: (session?.user as UserWithId)?.id, };
+
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized", status: 401 });
     }
@@ -45,9 +52,11 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req: Request) {
-  try {
-    const { userId } = { userId: null, };
+export async function GET( ) {
+  // try {
+    const session  = await getServerSession(authOptions);
+    console.log(session)
+    const { userId } = { userId: (session?.user as UserWithId)?.id, };
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized", status: 401 });
@@ -60,15 +69,18 @@ export async function GET(req: Request) {
     });
 
     return NextResponse.json(tasks);
-  } catch (error) {
-    console.log("ERROR GETTING TASKS: ", error);
-    return NextResponse.json({ error: "Error updating task", status: 500 });
-  }
+  // } catch (error) {
+  //   console.log("ERROR GETTING TASKS: ", error);
+  //   return NextResponse.json({ error: "Error updating task", status: 500 });
+  // }
 }
 
 export async function PUT(req: Request) {
   try {
-    const { userId } = { userId: null, };
+    const session  = await getServerSession(authOptions);
+
+    const { userId } = { userId: (session?.user as UserWithId)?.id, };
+
     const { isCompleted, id } = await req.json();
 
     if (!userId) {

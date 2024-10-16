@@ -3,12 +3,17 @@ import React, { createContext, useState, useContext } from "react";
 import themes from "./themes";
 import axios from "axios";
 import toast from "react-hot-toast";
-
+import { useSession } from "next-auth/react";
 export const GlobalContext = createContext();
 export const GlobalUpdateContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
-  const { user } = {userId: null,};
+
+  
+  const { data: session } = useSession();
+  const { user } = {
+    user: session?.user,
+  };
 
   const [selectedTheme] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +41,7 @@ export const GlobalProvider = ({ children }) => {
     try {
       const res = await axios.get("/api/tasks");
 
-      const sorted = res.data.sort((a, b) => {
+      const sorted = res.data?.sort((a, b) => {
         return (
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
@@ -52,7 +57,7 @@ export const GlobalProvider = ({ children }) => {
 
   const deleteTask = async (id) => {
     try {
-      const res = await axios.delete(`/api/tasks/${id}`);
+      await axios.delete(`/api/tasks/${id}`);
       toast.success("Task deleted");
 
       allTasks();
@@ -64,7 +69,7 @@ export const GlobalProvider = ({ children }) => {
 
   const updateTask = async (task) => {
     try {
-      const res = await axios.put(`/api/tasks`, task);
+      await axios.put(`/api/tasks`, task);
 
       toast.success("Task updated");
 
