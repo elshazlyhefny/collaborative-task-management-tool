@@ -8,6 +8,7 @@ import Button from "../Button/Button";
 import { add } from "@/app/utils/Icons";
 import { useTranslations } from "next-intl";
 import { ChangeEvent } from 'react';
+import { FormEvent } from 'react';
 
 
 function CreateContent() {
@@ -24,11 +25,7 @@ function CreateContent() {
     switch (name) {
       case "title":
         setTitle(e.target.value);
-        break;
-      case "description":
-        setDescription(e.target.value);
-        break;
-      case "date":
+        break;case "date":
         setDate(e.target.value);
         break;
       case "completed":
@@ -41,8 +38,11 @@ function CreateContent() {
         break;
     }
   };
+  const handleTextareaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.target.value);
+  };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const task = {
@@ -89,7 +89,7 @@ function CreateContent() {
         <label htmlFor="description">{t("Description")}</label>
         <textarea
           value={description}
-          onChange={handleChange("description")}
+          onChange={handleTextareaChange}
           name="description"
           id="description"
           rows={4}

@@ -9,7 +9,7 @@ import Modal from "../Modals/Modal";
 import { useTranslations } from "next-intl";
 
 interface Task {
-  id: number;
+  id: string;
   title: string;
   description: string;
   date: string;
