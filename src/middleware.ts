@@ -38,7 +38,7 @@ export default function middleware(req: NextRequest) {
     if (isPublicPage) {
         return intlMiddleware(req);
     } else {
-        return (authMiddleware as any)(req);
+        return (authMiddleware as unknown as (req: NextRequest) => void)(req);
     }
 }
 

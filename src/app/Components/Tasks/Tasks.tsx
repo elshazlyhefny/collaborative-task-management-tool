@@ -8,9 +8,16 @@ import { add, plus } from "@/app/utils/Icons";
 import Modal from "../Modals/Modal";
 import { useTranslations } from "next-intl";
 
+interface Task {
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  isCompleted: boolean;
+}
 interface Props {
   title: string;
-  tasks: any[];
+  tasks: Task[];
 }
 
 function Tasks({ title, tasks }: Props) {
