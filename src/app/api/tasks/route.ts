@@ -2,12 +2,7 @@ import prisma from "@/app/utils/connect";
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/lib/nextAuth";
-interface UserWithId {
-  id: string;
-  name?: string | null | undefined;
-  email?: string | null | undefined;
-  image?: string | null | undefined;
-}
+import { UserWithId } from "@/app/lib/user";
 export async function POST(req: Request) {
   try {
     const session  = await getServerSession(authOptions);

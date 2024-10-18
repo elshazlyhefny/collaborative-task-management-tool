@@ -2,7 +2,7 @@ import { type AuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import { PrismaAdapter }  from "@auth/prisma-adapter"
 import prisma from "@/app/utils/connect";
-
+import { UserWithId } from "@/app/lib/user";
 export const authOptions: AuthOptions = {   
     session: {
         strategy: "jwt",
@@ -31,12 +31,14 @@ export const authOptions: AuthOptions = {
             return { ...token, ...user };
         },
         session({ session, token }) {
-            // I skipped the line below coz it gave me a TypeError
-            // session.accessToken = token.accessToken;
-            session.user.id = token.id;
-      
+            if (token.id) {
+                session.user = {
+                    ...session.user,
+                    id: token.id
+                } as UserWithId & { id: string };
+            }
             return session;
-          },
+        }
     }
 
 }
