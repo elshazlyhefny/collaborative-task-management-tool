@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Button from "../Button/Button";
 import { add } from "@/app/utils/Icons";
 import { useTranslations } from "next-intl";
+import { ChangeEvent } from 'react';
 
 
 function CreateContent() {
@@ -19,7 +20,7 @@ function CreateContent() {
 
   const { theme, allTasks, closeModal } = useGlobalState();
 
-  const handleChange = (name: string) => (e: any) => {
+  const handleChange = (name: string) => (e: ChangeEvent<HTMLInputElement>) => {
     switch (name) {
       case "title":
         setTitle(e.target.value);
