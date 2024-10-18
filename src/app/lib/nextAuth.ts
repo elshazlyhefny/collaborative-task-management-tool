@@ -3,6 +3,8 @@ import GoogleProvider from "next-auth/providers/google"
 import { PrismaAdapter }  from "@auth/prisma-adapter"
 import prisma from "@/app/utils/connect";
 import { UserWithId } from "@/app/lib/user";
+import GithubProvider from "next-auth/providers/github";
+
 export const authOptions: AuthOptions = {   
     session: {
         strategy: "jwt",
@@ -22,7 +24,18 @@ export const authOptions: AuthOptions = {
                 }
             }
         }),
-        
+        GithubProvider({
+            clientId: process.env.GITHUB_ID as string,
+            clientSecret: process.env.GITHUB_SECRET as string,
+            profile(profile) {
+                return {
+                    id: profile.id,
+                    name: profile.name,
+                    email: profile.email,
+                    image: profile.avatar_url
+                }
+            }
+        })
         // ...add more providers here
     ],
 
